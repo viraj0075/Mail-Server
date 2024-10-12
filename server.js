@@ -7,9 +7,15 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000; 
+const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+const corsOptions = {
+  origin: ['https://viraj-portfolio-797.vercel.app', 'http://localhost:5173'],
+  methods: ['GET', 'POST'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
@@ -28,7 +34,7 @@ transporter.verify((error) => {
   }
 });
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "Hello World" });
 });
 
