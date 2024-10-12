@@ -27,7 +27,7 @@ transporter.verify((error) => {
   }
 });
 
-app.use("/",(req,res) =>
+app.get("/",(req,res) =>
 {
   res.json({message:"Hello World"})
 })
