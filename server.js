@@ -29,7 +29,7 @@ transporter.verify((error) => {
 
 app.get("/",(req,res) =>
 {
-  res.json({message:"Hello World"})
+    res.send("hello")
 })
 
 app.post('/api/send-email', (req, res) => {
